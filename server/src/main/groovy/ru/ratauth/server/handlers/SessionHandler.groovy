@@ -36,7 +36,7 @@ class SessionHandler implements Action<Chain> {
       sessionService.invalidateByRefreshToken(request.clientId, request.refreshToken)
     } subscribe({
       res -> ctx.response.status HttpStatus.OK.value() send()
-    }, { /*on error*/
+    }, {
     throwable -> ctx.get(ServerErrorHandler).error(ctx, throwable)
     }
     )
